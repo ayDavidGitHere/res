@@ -1,12 +1,11 @@
 let CDrawf = {};    
-class CDraw{
-    static scope= this
-    static a
-    static b
-    static init= function(a, b){
+let CDraw = {
+    scope: this,
+    a: null, b: null,
+    init: function(a, b){
         CDraw.a = a; CDraw.b = b;
-    }
-    static line= function(x, endX, y, endY, color="red", thick=1){
+    },
+    line: function(x, endX, y, endY, color="red", thick=1){
         [this.x, this.endX, this.y, this.endY, this.color,this.thick] =
         [x, endX, y, endY, color, thick];
         this.lengthX = Math.abs(this.x-this.endX);
@@ -19,8 +18,8 @@ class CDraw{
         B.lineTo(this.endX, this.endY); B.stroke();    
         B.closePath(); 
         }
-    }
-    static text= function(fontStyle, text, x, y,styling, maxWidth=309000){
+    },
+    text:function(fontStyle, text, x, y,styling, maxWidth=309000){
         this.textAlign =
         ["left", "center", "right"][MHelp.countIn(fontStyle, "+")];
         this.textBaseline =
@@ -46,8 +45,8 @@ class CDraw{
         
         }//EO draw
         
-    }
-    static sLine= function(x, lengthX, y, breadthY, color, thick){
+    },
+    sLine: function(x, lengthX, y, breadthY, color, thick){
         [this.x, this.lengthX, this.y, this.breadthY, this.color,this.thick] =
         [x, lengthX, y, breadthY, color, thick];
         this.draw = (B)=>{   
@@ -58,8 +57,8 @@ class CDraw{
         B.lineTo(this.endX, this.endY); B.stroke();    
         B.closePath();
         }
-    }
-    static arc= function(x, y, r, start, end, styling){
+    },
+    arc: function(x, y, r, start, end, styling){
         this.x = x; this.y = y, this.radius = r; this.start= start;
         this.end = end; this.styling = styling; this.type = "arc";
         this.draw = (B)=>{   
@@ -71,8 +70,8 @@ class CDraw{
             aDS.call();
             B.closePath();
         }
-    }
-    static rect= function( x, lengthX, y, breadthY, styling ){
+    },
+    rect: function( x, lengthX, y, breadthY, styling ){
         this.x = x;   this.lengthX = lengthX;
         this.y = y;   this.breadthY = breadthY;
         this.styling = styling;
@@ -89,8 +88,8 @@ class CDraw{
             })
             B.closePath();    
         }//EO draw
-    }
-    static autoDrawStyle= function(B, styling){
+    },
+   autoDrawStyle: function(B, styling){
        var spl = styling.split("_");
        this.color = spl[1]; 
        this.strokeWidth = Number(spl[0]); 
@@ -107,25 +106,23 @@ class CDraw{
            if(this.type == "stroke"){ strokeCallback(); }
        }
        
-    }
-    static drawStyle= {
+   },
+   drawStyle: {
          lW: function(B, lW){     B.lineWidth = lW;   },
          gA: function(B, gAfa=1){     B.globalAlpha = gAfa;  },
          lC: function(B, lC){   B.lineCap = ""+lC;       },
          tA: function(B, tA){   B.textAlign = tA ;      },
          tB: function(B, tB){   B.textBaseline = tB;    }
-    }
-    static clearCanvas= function(B){
+    },
+   clearCanvas: function(B){
        B.clearRect(0, 0, B.canvas.width, B.canvas.height)
-    }
-    static setCanvasStyle= function(a, settings){
+   },
+   setCanvasStyle: function(a, settings){
         if(settings.type == "fill"){
             a.width = a.parentNode.scrollWidth;
             a.height = a.parentNode.scrollHeight;
-            //bad fixrs
-            a.style.zIndex = -100;
-            a.parentNode.style.overflow =
-            (a.parentNode!=document.body?"hidden":0);
+            a.parentNode.style.overflow = "hidden";
+            a.style.clear = "both";
         }
 
         a.style.position = settings.position;
@@ -137,8 +134,8 @@ class CDraw{
             a.style.marginLeft = 0;
             a.style.marginTop = 0;
         }
-    }
-    static useScene= function(context){
+    },
+   useScene: function(context){
         this.B = context;
         this.allChildren = [];
         let animFrame = ()=>{
@@ -178,7 +175,8 @@ class CDraw{
         callback( arr_opaq_pos );
         }// EO getOpaquePixels
     
-    }//EO useScene
+    },//EO useScene
+
     
     
 

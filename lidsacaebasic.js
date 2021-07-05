@@ -178,7 +178,7 @@ Array.prototype.ay = {
              
              
              
-console.info("Keywords: MHelp class„ DOMHelp class„ ObjHelp class")
+console.info("Keywords: MHelp,  DOMHelp,  ObjHelp ");
 class MHelp{
     
     static compareArr(arr, arrComp, callback){
@@ -210,9 +210,14 @@ class MHelp{
         return Math.min(Math.max(min, +val), max);
     }
     static resultantOf(x, y){
-        return Math.sqrt( Math.pow(x, 2)+Math.pow(y, 2) )
+        return Math.sqrt( Math.pow(x, 2)+Math.pow(y, 2) );
     }
-    
+    static signelta(num, over){
+      return (1- 2*(Math.floor(num/over)%2));
+    }
+    static countIn(string, substring){
+        return ( string.split(substring).length -1 );
+    } 
     
 }//EO MHelp
 
@@ -223,9 +228,9 @@ class MHelp{
 
 class ObjHelp{
     
-    static getProps(obj, props = []){
+    static getPropsOf(obj, props = []){
         return obj == null ? props :
-        this.getProps(Object.getPrototypeOf(obj),
+        this.getPropsOf(Object.getPrototypeOf(obj),
         props.concat(Object.getOwnPropertyNames(obj)));
     }
     
@@ -261,8 +266,35 @@ class DOMHelp{
         return  document.getElementsByTagName(string);
         }
     }//EO tagn
+    
+}
 
-}//EO ObjHelp
+
+
+class NETHelp {
+    static AJAX(type, params, address, callback, callbackYet=function(){} ){
+        var url = address + '?';
+        var notFirst = false;
+        for (var key in params) {
+            if (params.hasOwnProperty(key)) {
+                url += (notFirst ? '&' : '') + key + "=" + params[key];
+            }
+            notFirst = true;
+        }
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 ){
+            if (xmlhttp.status == 200) {
+                callback(xmlhttp.responseText);
+        }
+        }
+        else{callbackYet();}
+        };
+        xmlhttp.open(type, url, true);
+        xmlhttp.send();
+    }
+             
+}//EO NETHelp
     
     
     

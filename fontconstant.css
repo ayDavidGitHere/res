@@ -1,0 +1,63 @@
+
+@font-face{
+ src: url("fonts/CodaR.ttf");   
+ font-family:codar;
+    
+}
+@font-face{
+ src: url("fonts/nb.ttf");   
+ font-family:nb;
+}
+@font-face{
+ src: url("fonts/The27.ttf");   
+ font-family:the27;
+}
+
+@font-face{
+ src: url("fonts/Cosmix.ttf");   
+ font-family:cosmix;
+}
+
+@font-face{
+ src: url("fonts/DINB.otf");   
+ font-family:dinb;
+}
+
+@font-face{
+ src: url("http://localhost:8080/fonts/Woodwork.ttf");   
+ font-family:woodwork;
+}
+
+@font-face{
+ src: url("fonts/Autumn.ttf");   
+ font-family:autumn;
+}
+
+@font-face{
+ src: url("http://localhost:1111/fonts/Eutemia.ttf");   
+ font-family:eutemia;
+}
+
+@font-face{
+ src: url("fonts/JosefinSR.ttf");   
+ font-family:josefinsr;
+}
+
+@font-face{
+ src: url("fonts/Tabloid.ttf");   
+ font-family:tabloid;
+}
+@font-face{
+ src: url("fonts/HelveticaBold.ttf");   
+ font-family:helveticabold;
+}
+@font-face{
+ src: url("fonts/abelr.ttf");   
+ font-family:abelr;
+}
+ 
+
+
+
+/*   server not loading font */
+
